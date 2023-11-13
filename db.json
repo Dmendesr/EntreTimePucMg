@@ -1,0 +1,43 @@
+{
+    "eventos": [
+        {     
+    "id": 1,
+    "tipo": 0,
+    "nomeEvento": "Máquina 4",
+    "nomeLocal": "Bar do Berci",
+    "endereco": "Rua Mangabeiras 123",
+    "bairro": "Aparecida",
+    "cidade": "BH",
+    "estado": "MG",
+    "dataInicioEvento": "29/10/23",
+    "horaInicioEvento": "22: 00",
+    "valorEntrada": 30
+        },
+        {
+    "id": 2,
+    "tipo": 1,
+    "nomeEvento": "Raul Seixas ao vivo",
+    "nomeLocal": "Bar Panela do Diabo",
+    "endereco": "Rua Dois, 33",
+    "bairro": "São João Batista",
+    "cidade": "B.H",
+    "estado": "MG",
+    "dataInicioEvento": "25/10/23",
+    "horaInicioEvento": "22: 00",
+    "valorEntrada": 1000
+        },
+        {
+    "id": 3,
+    "tipo": 2,
+    "nomeEvento": "Kamikaze",
+    "nomeLocal": "Kamikaze Bar",
+    "endereco": "Rua Japão 3",
+    "bairro": "Pindorama",
+    "cidade": "BH",
+    "estado": "MG",
+    "dataInicioEvento": "30/10/22",
+    "horaInicioEvento": "21: 00",
+    "valorEntrada": 5
+        }
+    ]
+}
