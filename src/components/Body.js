@@ -1,8 +1,13 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import {StyleSheet, View} from 'react-native';
 
 const Body = ({children}) =>{
   return <View style={styles.container}>{children}</View>
+};
+Body.propTypes = {
+  children: PropTypes.node.isRequired,
 };
 
 const styles = StyleSheet.create({
