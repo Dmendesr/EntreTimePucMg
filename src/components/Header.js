@@ -16,7 +16,7 @@ const Header = ({ title, goBack, children }) => {
 };
 Header.propTypes = {
   title: PropTypes.string.isRequired,
-  goBack: PropTypes.func.isRequired,
+  goBack: PropTypes.func,
   children: PropTypes.node,
   
 };

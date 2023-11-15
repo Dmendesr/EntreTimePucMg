@@ -58,7 +58,7 @@ const Eventos = () => {
   );
   return (
     <Container>
-    <Header title={'Eventos'} goBack={navigation.goBack}></Header>
+    <Header title={'Eventos'}></Header>
 
       <Body>
         <FlatList
