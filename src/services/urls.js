@@ -1,1 +1,1 @@
-export const BASE_URL = 'https://rich-carrots-cheat.loca.lt';
+export const BASE_URL = 'https://swift-states-pick.loca.lt';
