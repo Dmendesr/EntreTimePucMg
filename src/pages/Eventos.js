@@ -13,7 +13,7 @@ import {getEventos} from '../services/Eventos.Services';
 const Eventos = () => {
 
   const navigation = useNavigation();
-  const[eventos, setEventos] = useState([])
+  const[eventos, setEventos] = useState([]);
   
   useEffect(() => {
     getEventos().then(dados => {

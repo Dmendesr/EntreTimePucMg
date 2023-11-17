@@ -19,8 +19,8 @@ import Container from '../components/Container';
 import Body from '../components/Body';
 import Input from '../components/Input';
 
-
 import { useNavigation } from '@react-navigation/native';
+//import { updateEvento, insertEvento, deleteEvento } from '../services/Eventos.Services';
 
 const GerEventos = ({ route }) => {
   const navigation = useNavigation();
@@ -61,7 +61,6 @@ const GerEventos = ({ route }) => {
     }
   }, [item]);
 
-
   const handleSalvar = () => {
     if (item) {
       updateEvento({
@@ -77,7 +76,9 @@ const GerEventos = ({ route }) => {
         valorEntrada: valorEntrada,
         dataFimEvento: dataFimEvento,
         id: item.id,
-      }).then();
+      }).then(res => {
+        navigation.goBack();
+      });
     } else {
       insertEvento({
         tipo: tipo == 'esporte' ? 0 : 1,
@@ -91,15 +92,17 @@ const GerEventos = ({ route }) => {
         horaInicioEvento: horaInicioEvento,
         valorEntrada: valorEntrada,
         dataFimEvento: dataFimEvento,
-      }).then();
-    }
+      }).then(res => {
+        navigation.goBack();
+      });
 
-    navigation.goBack();
+    }
   };
 
   const handleExcluir = () => {
-    deleteEvento(item.id).then();
-    navigation.goBack();
+    deleteEvento(item.id).then(res => {
+      navigation.goBack();
+    } );
   };
 
   return (

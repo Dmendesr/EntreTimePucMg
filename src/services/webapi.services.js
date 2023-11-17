@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const API = axios.create({
-    baseURL: 'https://cold-berries-fold.loca.lt', 
+    baseURL: 'https://rich-carrots-cheat.loca.lt', 
 });
 
 export default API;

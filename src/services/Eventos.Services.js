@@ -3,7 +3,7 @@ import API from './webapi.services';
 
 export const getEventos = async () => {
   try{
-    return await API.get(`${BASE_URL}/660/eventos`).then( 
+    return await API.get(`${BASE_URL}/eventos`).then( 
       response => {
         return response.data;
       },
@@ -20,7 +20,7 @@ export const getEventos = async () => {
 
 export const insertEvento = async (param) => {
   try{
-    return await API.post(`${BASE_URL}/660/eventos`, param).then( 
+    return await API.post(`${BASE_URL}/eventos`, param).then( 
       response => {
         return response.data;
       },
@@ -37,7 +37,7 @@ export const insertEvento = async (param) => {
 
 export const updateEvento = async (param) => {
   try{
-    return await API.put(`${BASE_URL}/660/eventos/${param.id}`, param).then( 
+    return await API.put(`${BASE_URL}/eventos/${param.id}`, param).then( 
       response => {
         return response.data;
       },
@@ -54,7 +54,7 @@ export const updateEvento = async (param) => {
 
 export const deleteEvento = async (id) => {
   try{
-    return await API.delete(`${BASE_URL}/660/eventos/${id}`).then( 
+    return await API.delete(`${BASE_URL}/eventos/${id}`).then( 
       response => {
         return response.data;
       },
