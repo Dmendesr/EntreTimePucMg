@@ -3,11 +3,11 @@
   "eventos": [
     {
       "tipo": 1,
-      "nomeEvento": "Raul Editado",
+      "nomeEvento": "Raul Reeditado",
       "nomeLocal": "Bar Panela Editada",
       "endereco": "Rua Dois, 33",
       "bairro": "São João Batista",
-      "cidade": "B.H",
+      "cidade": "B.H ",
       "estado": "MG",
       "dataInicioEvento": "25/10/23",
       "horaInicioEvento": "22: 00",
@@ -15,17 +15,32 @@
       "id": 2
     },
     {
-      "id": 3,
-      "tipo": 2,
-      "nomeEvento": "Kamikaze",
-      "nomeLocal": "Kamikaze Bar",
+      "tipo": 1,
+      "nomeEvento": "Japa Sobrevivente",
+      "nomeLocal": "Japa Bar",
       "endereco": "Rua Japão 3",
       "bairro": "Pindorama",
       "cidade": "BH",
       "estado": "MG",
       "dataInicioEvento": "30/10/22",
       "horaInicioEvento": "21: 00",
-      "valorEntrada": 5
+      "valorEntrada": "12345",
+      "dataFimEvento": "30/11",
+      "id": 3
+    },
+    {
+      "tipo": 1,
+      "nomeEvento": "Rango add teste",
+      "nomeLocal": "Ranguinho teste ok",
+      "endereco": "Rua Deu certo",
+      "bairro": "Boa Vista",
+      "cidade": "BH",
+      "estado": "MG",
+      "dataInicioEvento": "18/11/2023",
+      "horaInicioEvento": "11:11",
+      "valorEntrada": "1111",
+      "dataFimEvento": "18/11/2023",
+      "id": 4
     }
   ]
 }
