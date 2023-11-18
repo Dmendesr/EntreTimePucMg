@@ -30,20 +30,6 @@
     },
     {
       "tipo": 1,
-      "nomeEvento": "Rango add teste",
-      "nomeLocal": "Ranguinho teste ok",
-      "endereco": "Rua Deu certo",
-      "bairro": "Boa Vista",
-      "cidade": "BH",
-      "estado": "MG",
-      "dataInicioEvento": "18/11/2023",
-      "horaInicioEvento": "11:11",
-      "valorEntrada": "1111",
-      "dataFimEvento": "18/11/2023",
-      "id": 4
-    },
-    {
-      "tipo": 1,
       "nomeEvento": "Adicionando mais um",
       "nomeLocal": "ADD +1",
       "endereco": "Rua ADD ",
