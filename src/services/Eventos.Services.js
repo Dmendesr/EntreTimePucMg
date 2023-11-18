@@ -1,62 +1,69 @@
-import {BASE_URL} from './urls';
 import API from './webapi.services';
 
 export const getEventos = async () => {
-  try{
-    return await API.get(`${BASE_URL}/eventos`).then( 
+  try {
+    const endpointPath = '/eventos';
+
+    return await API.get(endpointPath).then(
       response => response.data,
-      error =>{
+      error => {
         console.log(error);
-        return  null;
+        return null;
       }
     );
-  }catch(error){
+  } catch (error) {
     console.log(error);
     return null;
   }
-}
+};
 
 export const insertEvento = async (param) => {
-  try{
-    return await API.post(`${BASE_URL}/eventos`, param).then( 
+  try {
+    const endpointPath = '/eventos';
+
+    return await API.post(endpointPath, param).then(
       response => response.data,
-      error =>{
+      error => {
         console.log(error);
-        return  null;
+        return null;
       }
     );
-  }catch(error){
+  } catch (error) {
     console.log(error);
     return null;
   }
-}
+};
 
 export const updateEvento = async (param) => {
-  try{
-    return await API.put(`${BASE_URL}/eventos/${param.id}`, param).then( 
-      response =>  response.data,
-      error =>{
+  try {
+    const endpointPath = `/eventos/${param.id}`;
+
+    return await API.put(endpointPath, param).then(
+      response => response.data,
+      error => {
         console.log(error);
-        return  null;
+        return null;
       }
     );
-  }catch(error){
+  } catch (error) {
     console.log(error);
     return null;
   }
-}
+};
 
 export const deleteEvento = async (id) => {
-  try{
-    return await API.delete(`${BASE_URL}/eventos/${id}`).then( 
+  try {
+    const endpointPath = `/eventos/${id}`;
+
+    return await API.delete(endpointPath).then(
       response => response.data,
-      error =>{
+      error => {
         console.log(error);
-        return  null;
+        return null;
       }
     );
-  }catch(error){
+  } catch (error) {
     console.log(error);
     return null;
   }
-}
+};

@@ -2,17 +2,17 @@
   "users": [],
   "eventos": [
     {
-      "id": 2,
       "tipo": 1,
-      "nomeEvento": "Raul Seixas ao vivo",
-      "nomeLocal": "Bar Panela do Diabo",
+      "nomeEvento": "Raul Editado",
+      "nomeLocal": "Bar Panela Editada",
       "endereco": "Rua Dois, 33",
       "bairro": "São João Batista",
       "cidade": "B.H",
       "estado": "MG",
       "dataInicioEvento": "25/10/23",
       "horaInicioEvento": "22: 00",
-      "valorEntrada": 1000
+      "valorEntrada": "100",
+      "id": 2
     },
     {
       "id": 3,

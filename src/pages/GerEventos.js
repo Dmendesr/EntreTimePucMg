@@ -38,7 +38,7 @@ const GerEventos = ({ route }) => {
   const [estado, setEstado] = useState(null);
   const [dataInicioEvento, setDataInicioEvento] = useState(moment(new Date()).format('DD/MM/YYYY'));
   const [horaInicioEvento, setHoraInicioEvento] = useState(moment(new Date()).format('HH:mm'));
-  const [valorEntrada, setValorEntrada] = useState(null);
+  const [valorEntrada, setValorEntrada] = useState('');
   const [dataFimEvento, setDataFimEvento] = useState(moment(new Date()).format('DD/MM/YYYY'));
 
 
@@ -176,7 +176,7 @@ const GerEventos = ({ route }) => {
           {show && (
             <DateTimePicker
               testID="dateTimePicker"
-              value={moment(date, 'DD/MM/YYYY').toDate()}
+              value={moment(data, 'DD/MM/YYYY').toDate()}
               mode={'date'}
               is24Hour={true}
               display="default"
@@ -264,6 +264,7 @@ const GerEventos = ({ route }) => {
             value={valorEntrada}
             onChangeText={(text) => setValorEntrada(text)}
             left={<TextInput.Icon name="currency-brl" />}
+            keyboardType="numeric"
           />
           <Input
             label="Data fim evento"
