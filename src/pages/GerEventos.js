@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import {updateEvento, insertEvento, deleteEvento} from '../services/Eventos.Services';
-
 
 import { View, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
 import {
@@ -20,7 +18,7 @@ import Body from '../components/Body';
 import Input from '../components/Input';
 
 import { useNavigation } from '@react-navigation/native';
-//import { updateEvento, insertEvento, deleteEvento } from '../services/Eventos.Services';
+import {updateEvento, insertEvento, deleteEvento} from '../services/Eventos.Services';
 
 const GerEventos = ({ route }) => {
   const navigation = useNavigation();
