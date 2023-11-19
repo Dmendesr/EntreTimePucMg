@@ -24,7 +24,7 @@ const GerEventos = ({ route }) => {
   const navigation = useNavigation();
   const { item } = route.params ? route.params : {};
 
-  const [data, setData] = useState(moment(new Date()).format('DD/MM/YYYY'));
+ // const [data, setData] = useState(moment(new Date()).format('DD/MM/YYYY'));
 
   const [show, setShow] = useState(false);
 
@@ -176,14 +176,14 @@ const GerEventos = ({ route }) => {
           {show && (
             <DateTimePicker
               testID="dateTimePicker"
-              value={moment(data, 'DD/MM/YYYY').toDate()}
+              value={moment(dataInicioEvento, 'DD/MM/YYYY').toDate()}
               mode={'date'}
               is24Hour={true}
               display="default"
               onTouchCancel={() => setShow(false)}
               onChange={(_event, date) => {
                 setShow(false);
-                setData(moment(date).format('DD/MM/YYYY'));
+                setDataInicioEvento(moment(date).format('DD/MM/YYYY'));
               }}
             />
           )}
@@ -191,7 +191,7 @@ const GerEventos = ({ route }) => {
           <TouchableOpacity onPress={() => setShow(true)}>
             <Input
               label="Data"
-              value={data}
+              value={dataInicioEvento}
               left={<TextInput.Icon name="calendar" />}
               editable={false}
             />
