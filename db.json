@@ -28,6 +28,20 @@
       "horaInicioEvento": "11:33",
       "valorEntrada": "333",
       "dataFimEvento": "30/11/2023"
+    },
+    {
+      "tipo": 1,
+      "nomeEvento": "Rango Teste",
+      "nomeLocal": "Rest. Rango",
+      "endereco": "Rua Rango",
+      "bairro": "Rango",
+      "cidade": "Bh",
+      "estado": "Mg",
+      "dataInicioEvento": "30/11/2023",
+      "horaInicioEvento": "21:00",
+      "valorEntrada": "0",
+      "dataFimEvento": "30/11/2023",
+      "id": 5
     }
   ]
 }
