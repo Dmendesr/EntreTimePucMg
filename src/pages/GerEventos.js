@@ -3,14 +3,13 @@ import PropTypes from 'prop-types';
 
 import { View, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
 import {
-  RadioButton,
-  Text,
   TextInput,
   Button,
   Appbar,
 } from 'react-native-paper';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import moment from 'moment';
+import RNPickerSelect from 'react-native-picker-select';
 
 import Header from '../components/Header';
 import Container from '../components/Container';
@@ -18,16 +17,14 @@ import Body from '../components/Body';
 import Input from '../components/Input';
 
 import { useNavigation } from '@react-navigation/native';
-import {updateEvento, insertEvento, deleteEvento} from '../services/Eventos.Services';
+import { updateEvento, insertEvento, deleteEvento } from '../services/Eventos.Services';
 
 const GerEventos = ({ route }) => {
   const navigation = useNavigation();
   const { item } = route.params ? route.params : {};
 
   const [data, setData] = useState(moment(new Date()).format('DD/MM/YYYY'));
-
   const [show, setShow] = useState(false);
-
   const [tipo, setTipo] = useState('esporte');
 
   const [nomeEvento, setNomeEvento] = useState(null);
@@ -100,7 +97,7 @@ const GerEventos = ({ route }) => {
   const handleExcluir = () => {
     deleteEvento(item.id).then(res => {
       navigation.goBack();
-    } );
+    });
   };
 
   return (
@@ -115,62 +112,19 @@ const GerEventos = ({ route }) => {
       <ScrollView style={{ flex: 1 }}>
         <Body>
           <View style={styles.containerRadio}>
-            <View style={styles.containerRadioItem}>
-              <RadioButton
-                value="esporte"
-                status={tipo === 'esporte' ? 'checked' : 'unchecked'}
-                onPress={() => setTipo('esporte')}
-              />
-              <Text>Esportes</Text>
-            </View>
-            <View style={styles.containerRadioItem}>
-              <RadioButton
-                value="expo"
-                status={tipo === 'expo' ? 'checked' : 'unchecked'}
-                onPress={() => setTipo('expo')}
-              />
-              <Text>Exposicao/Feira</Text>
-            </View>
-            <View style={styles.containerRadioItem}>
-              <RadioButton
-                value="game"
-                status={tipo === 'game' ? 'checked' : 'unchecked'}
-                onPress={() => setTipo('game')}
-              />
-              <Text>Games</Text>
-            </View>
-            <View style={styles.containerRadioItem}>
-              <RadioButton
-                value="gastronomia"
-                status={tipo === 'gastronomia' ? 'checked' : 'unchecked'}
-                onPress={() => setTipo('gastronomia')}
-              />
-              <Text>Gastronomia/Bebidas</Text>
-            </View>
-            <View style={styles.containerRadioItem}>
-              <RadioButton
-                value="vivo"
-                status={tipo === 'vivo' ? 'checked' : 'unchecked'}
-                onPress={() => setTipo('vivo')}
-              />
-              <Text>Musica ao vivo</Text>
-            </View>
-            <View style={styles.containerRadioItem}>
-              <RadioButton
-                value="eletronica"
-                status={tipo === 'eletronica' ? 'checked' : 'unchecked'}
-                onPress={() => setTipo('eletronica')}
-              />
-              <Text>Musica Eletronica</Text>
-            </View>
-            <View style={styles.containerRadioItem}>
-              <RadioButton
-                value="showMusic"
-                status={tipo === 'showMusic' ? 'checked' : 'unchecked'}
-                onPress={() => setTipo('showMusic')}
-              />
-              <Text>Shows</Text>
-            </View>
+            <RNPickerSelect
+              onValueChange={(value) => setTipo(value)}
+              items={[
+                { label: 'Esportes', value: 'esporte' },
+                { label: 'Exposicao/Feira', value: 'expo' },
+                { label: 'Games', value: 'game' },
+                { label: 'Gastronomia/Bebidas', value: 'gastronomia' },
+                { label: 'Musica ao vivo', value: 'vivo' },
+                { label: 'Musica Eletronica', value: 'eletronica' },
+                { label: 'Shows', value: 'showMusic' },
+              ]}
+              value={tipo}
+            />
           </View>
 
           {show && (
@@ -202,7 +156,7 @@ const GerEventos = ({ route }) => {
             value={nomeEvento}
             onChangeText={(text) => setNomeEvento(text)}
             left={<TextInput.Icon icon="calendar-star" />}
-            keyboardType="default" 
+            keyboardType="default"
           />
 
           <Input
@@ -210,7 +164,7 @@ const GerEventos = ({ route }) => {
             value={nomeLocal}
             onChangeText={(text) => setNomeLocal(text)}
             left={<TextInput.Icon icon="calendar-star" />}
-            keyboardType="default" 
+            keyboardType="default"
           />
 
           <Input
@@ -218,7 +172,7 @@ const GerEventos = ({ route }) => {
             value={endereco}
             onChangeText={(text) => setEndereco(text)}
             left={<TextInput.Icon icon="calendar-star" />}
-            keyboardType="default" 
+            keyboardType="default"
           />
 
           <Input
@@ -226,7 +180,7 @@ const GerEventos = ({ route }) => {
             value={bairro}
             onChangeText={(text) => setBairro(text)}
             left={<TextInput.Icon icon="calendar-star" />}
-            keyboardType="default" 
+            keyboardType="default"
           />
 
           <Input
@@ -234,7 +188,7 @@ const GerEventos = ({ route }) => {
             value={cidade}
             onChangeText={(text) => setCidade(text)}
             left={<TextInput.Icon icon="calendar-star" />}
-            keyboardType="default" 
+            keyboardType="default"
           />
 
           <Input
@@ -242,8 +196,8 @@ const GerEventos = ({ route }) => {
             value={estado}
             onChangeText={(text) => setEstado(text)}
             left={<TextInput.Icon icon="calendar-star" />}
-            keyboardType="default" 
-            
+            keyboardType="default"
+
           />
 
           <Input
