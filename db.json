@@ -16,20 +16,6 @@
       "dataFimEvento": "30/11"
     },
     {
-      "id": 4,
-      "tipo": 1,
-      "nomeEvento": "Terceiro Evento",
-      "nomeLocal": "ADD +1",
-      "endereco": "Rua ADD ",
-      "bairro": "ADD",
-      "cidade": "BH",
-      "estado": "MG",
-      "dataInicioEvento": "30/11/2023",
-      "horaInicioEvento": "11:33",
-      "valorEntrada": "333",
-      "dataFimEvento": "30/11/2023"
-    },
-    {
       "tipo": 1,
       "nomeEvento": "Rango Teste",
       "nomeLocal": "Rest. Rango",
