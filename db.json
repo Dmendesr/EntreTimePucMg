@@ -28,6 +28,20 @@
       "valorEntrada": "0",
       "dataFimEvento": "30/11/2023",
       "id": 5
+    },
+    {
+      "tipo": 0,
+      "nomeEvento": "BMX TESTE",
+      "nomeLocal": "BOW",
+      "endereco": "Nova Azul",
+      "bairro": "Nova",
+      "cidade": "BH",
+      "estado": "MG",
+      "dataInicioEvento": "30/11/2023",
+      "horaInicioEvento": "18:01",
+      "valorEntrada": "1",
+      "dataFimEvento": "30/11/2023",
+      "id": 6
     }
   ]
 }
