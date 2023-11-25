@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const BASE_URL = 'https://green-banks-rule.loca.lt';
+export const BASE_URL = 'https://entre-time-json.vercel.app';
 
 const API = axios.create({
     baseURL: BASE_URL,
