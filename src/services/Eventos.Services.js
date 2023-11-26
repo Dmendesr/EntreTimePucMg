@@ -3,16 +3,10 @@ import API from './webapi.services';
 export const getEventos = async () => {
   try {
     const endpointPath = '/eventos';
-
-    return await API.get(endpointPath).then(
-      response => response.data,
-      error => {
-        console.log(error);
-        return null;
-      }
-    );
+    const response = await API.get(endpointPath);
+    return response.data;
   } catch (error) {
-    console.log(error);
+    console.error(error);
     return null;
   }
 };
@@ -20,16 +14,10 @@ export const getEventos = async () => {
 export const insertEvento = async (param) => {
   try {
     const endpointPath = '/eventos';
-
-    return await API.post(endpointPath, param).then(
-      response => response.data,
-      error => {
-        console.log(error);
-        return null;
-      }
-    );
+    const response = await API.post(endpointPath, param);
+    return response.data;
   } catch (error) {
-    console.log(error);
+    console.error(error);
     return null;
   }
 };
@@ -37,16 +25,10 @@ export const insertEvento = async (param) => {
 export const updateEvento = async (param) => {
   try {
     const endpointPath = `/eventos/${param.id}`;
-
-    return await API.put(endpointPath, param).then(
-      response => response.data,
-      error => {
-        console.log(error);
-        return null;
-      }
-    );
+    const response = await API.put(endpointPath, param);
+    return response.data;
   } catch (error) {
-    console.log(error);
+    console.error(error);
     return null;
   }
 };
@@ -54,16 +36,10 @@ export const updateEvento = async (param) => {
 export const deleteEvento = async (id) => {
   try {
     const endpointPath = `/eventos/${id}`;
-
-    return await API.delete(endpointPath).then(
-      response => response.data,
-      error => {
-        console.log(error);
-        return null;
-      }
-    );
+    const response = await API.delete(endpointPath);
+    return response.data;
   } catch (error) {
-    console.log(error);
+    console.error(error);
     return null;
   }
 };

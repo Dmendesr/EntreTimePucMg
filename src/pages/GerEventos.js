@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-import { View, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
+import { View, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
 import {
   TextInput,
   Button,
@@ -23,7 +23,7 @@ const GerEventos = ({ route }) => {
   const navigation = useNavigation();
   const { item } = route.params ? route.params : {};
 
-  const [data, setData] = useState(moment(new Date()).format('DD/MM/YYYY'));
+
   const [show, setShow] = useState(false);
   const [tipo, setTipo] = useState('esporte');
 
@@ -130,26 +130,40 @@ const GerEventos = ({ route }) => {
           {show && (
             <DateTimePicker
               testID="dateTimePicker"
-              value={moment(data, 'DD/MM/YYYY').toDate()}
+              value={moment(dataInicioEvento, 'DD/MM/YYYY').toDate()}
               mode={'date'}
               is24Hour={true}
               display="default"
               onTouchCancel={() => setShow(false)}
               onChange={(_event, date) => {
                 setShow(false);
-                setData(moment(date).format('DD/MM/YYYY'));
+                setDataInicioEvento(moment(dataInicioEvento).format('DD/MM/YYYY'));
+              }}
+            />
+          )}
+          {show && (
+            <DateTimePicker
+              testID="dateTimePicker"
+              value={moment(dataFimEvento, 'DD/MM/YYYY').toDate()}
+              mode={'date'}
+              is24Hour={true}
+              display="default"
+              onTouchCancel={() => setShow(false)}
+              onChange={(_event, date) => {
+                setShow(false);
+                setDataFimEvento(moment(setDataFimEvento).format('DD/MM/YYYY'));
               }}
             />
           )}
 
-          <TouchableOpacity onPress={() => setShow(true)}>
+          {/* <TouchableOpacity onPress={() => setShow(true)}>
             <Input
               label="Data"
               value={data}
               left={<TextInput.Icon name="calendar" />}
               editable={false}
             />
-          </TouchableOpacity>
+          </TouchableOpacity> */}
 
           <Input
             label="Nome evento"
@@ -199,13 +213,14 @@ const GerEventos = ({ route }) => {
             keyboardType="default"
 
           />
-
+          {<TouchableOpacity onPress={() => setShow(true)}>
           <Input
             label="Data evento"
             value={dataInicioEvento}
             onChangeText={(text) => setDataInicioEvento(text)}
-            left={<TextInput.Icon icon="calendar-star" />}
+            left={<TextInput.Icon icon="calendar" />}
           />
+          </TouchableOpacity>}
 
           <Input
             label="Horário evento"
@@ -220,12 +235,14 @@ const GerEventos = ({ route }) => {
             left={<TextInput.Icon name="currency-brl" />}
             keyboardType="numeric"
           />
+          {<TouchableOpacity onPress={() => setShow(true)}>
           <Input
             label="Data fim evento"
             value={dataFimEvento}
             onChangeText={(text) => setDataFimEvento(text)}
-            left={<TextInput.Icon icon="calendar-lock" />}
+            left={<TextInput.Icon icon="calendar" />}
           />
+          </TouchableOpacity>}
 
           <Button
             mode="contained"
