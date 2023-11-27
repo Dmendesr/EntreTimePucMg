@@ -278,11 +278,6 @@ const styles = StyleSheet.create({
   containerRadio: {
     flexDirection: 'column',
   },
-  containerRadioItem: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
   button: {
     margin: 5,
   },
