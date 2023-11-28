@@ -30,6 +30,8 @@ const GerEventos = ({ route }) => {
   const [showStartPicker, setShowStartPicker] = useState(false);
   const [showEndPicker, setShowEndPicker] = useState(false);
 
+  const [showTimePicker, setShowTimePicker] = useState(false);
+
   const [loading, setLoading] = useState(true);
 
 
@@ -220,12 +222,31 @@ const GerEventos = ({ route }) => {
             />
           </TouchableOpacity>}
 
-          <Input
-            label="Horário evento"
-            value={horaInicioEvento}
-            onChangeText={(text) => setHoraInicioEvento(text)}
-            left={<TextInput.Icon icon="clock-time-nine-outline" />}
-          />
+          {showTimePicker && (
+            <DateTimePicker
+              testID="timeDateTimePicker"
+              value={startDate}
+              mode={'time'}
+              is24Hour={true}
+              display="clock"
+              onTouchCancel={() => setShowTimePicker(false)}
+              onChange={(event, date) => {
+                setShowTimePicker(false);
+                setStartDate(date);
+                setHoraInicioEvento(moment(date).format('HH:mm'));
+              }}
+            />
+          )}
+
+          <TouchableOpacity onPress={() => setShowTimePicker(true)}>
+            <Input
+              label="Horário evento"
+              value={horaInicioEvento}
+              onChangeText={(text) => setHoraInicioEvento(text)}
+              left={<TextInput.Icon icon="clock-time-nine-outline" />}
+              editable={false}
+            />
+          </TouchableOpacity>
           <Input
             label="Valor entrada"
             value={valorEntrada}
