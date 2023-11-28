@@ -26,6 +26,10 @@ const GerEventos = ({ route }) => {
 
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
+
+  const [showStartPicker, setShowStartPicker] = useState(false);
+  const [showEndPicker, setShowEndPicker] = useState(false);
+
   const [loading, setLoading] = useState(true);
 
 
@@ -198,9 +202,9 @@ const GerEventos = ({ route }) => {
               value={startDate}
               mode={'date'}
               is24Hour={true}
-              onTouchCancel={() => setShow(false)}
+              onTouchCancel={() => setShowStartPicker(false)}
               onChange={(event, date) => {
-                setShow(false);
+                setShowStartPicker(false);
                 setStartDate(date);
                 setDataInicioEvento(moment(date).format('DD/MM/YYYY'));
               }}
@@ -235,9 +239,9 @@ const GerEventos = ({ route }) => {
               value={endDate}
               mode={'date'}
               is24Hour={true}
-              onTouchCancel={() => setShow(false)}
+              onTouchCancel={() => setShowEndPicker(false)}
               onChange={(event, date) => {
-                setShow(false);
+                setShowEndPicker(false);
                 setEndDate(date);
                 setDataFimEvento(moment(date).format('DD/MM/YYYY'));
               }}
