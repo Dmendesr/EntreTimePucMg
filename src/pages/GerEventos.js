@@ -29,11 +29,9 @@ const GerEventos = ({ route }) => {
 
   const [showStartPicker, setShowStartPicker] = useState(false);
   const [showEndPicker, setShowEndPicker] = useState(false);
-
   const [showTimePicker, setShowTimePicker] = useState(false);
 
   const [loading, setLoading] = useState(true);
-
 
   const [show, setShow] = useState(false);
 
@@ -50,6 +48,29 @@ const GerEventos = ({ route }) => {
   const [valorEntrada, setValorEntrada] = useState('');
   const [dataFimEvento, setDataFimEvento] = useState(moment(new Date()).format('DD/MM/YYYY'));
 
+  const handleStartDateChange = (event, date) => {
+    setShowStartPicker(false);
+    if (date) {
+      setStartDate(date);
+      setDataInicioEvento(moment(date).format('DD/MM/YYYY'));
+    }
+  };
+
+  const handleTimeChange = (event, date) => {
+    setShowTimePicker(false);
+    if (date) {
+      setStartDate(date);
+      setHoraInicioEvento(moment(date).format('HH:mm'));
+    }
+  };
+
+  const handleEndDateChange = (event, date) => {
+    setShowEndPicker(false);
+    if (date) {
+      setEndDate(date);
+      setDataFimEvento(moment(date).format('DD/MM/YYYY'));
+    }
+  };
 
   useEffect(() => {
     if (item) {
@@ -116,7 +137,6 @@ const GerEventos = ({ route }) => {
     }
   };
 
-
   const handleExcluir = () => {
     deleteEvento(item.id).then(res => {
       navigation.goBack();
@@ -150,133 +170,130 @@ const GerEventos = ({ route }) => {
             />
           </View>
 
-          <Input
-            label="Nome evento"
-            value={nomeEvento}
-            onChangeText={(text) => setNomeEvento(text)}
-            left={<TextInput.Icon icon="calendar-star" />}
-            keyboardType="default"
-          />
-
-          <Input
-            label="Local"
-            value={nomeLocal}
-            onChangeText={(text) => setNomeLocal(text)}
-            left={<TextInput.Icon icon="calendar-star" />}
-            keyboardType="default"
-          />
-
-          <Input
-            label="Endereço"
-            value={endereco}
-            onChangeText={(text) => setEndereco(text)}
-            left={<TextInput.Icon icon="calendar-star" />}
-            keyboardType="default"
-          />
-
-          <Input
-            label="Bairro"
-            value={bairro}
-            onChangeText={(text) => setBairro(text)}
-            left={<TextInput.Icon icon="calendar-star" />}
-            keyboardType="default"
-          />
-
-          <Input
-            label="Cidade"
-            value={cidade}
-            onChangeText={(text) => setCidade(text)}
-            left={<TextInput.Icon icon="calendar-star" />}
-            keyboardType="default"
-          />
-
-          <Input
-            label="Estado"
-            value={estado}
-            onChangeText={(text) => setEstado(text)}
-            left={<TextInput.Icon icon="calendar-star" />}
-            keyboardType="default"
-
-          />
-          {show && (
-            <DateTimePicker
-              testID="startDateTimePicker"
-              value={startDate}
-              mode={'date'}
-              is24Hour={true}
-              onTouchCancel={() => setShowStartPicker(false)}
-              onChange={(event, date) => {
-                setShowStartPicker(false);
-                setStartDate(date);
-                setDataInicioEvento(moment(date).format('DD/MM/YYYY'));
-              }}
-            />
-          )}
-          {<TouchableOpacity onPress={() => setShow(true)}>
+          <View>
             <Input
-              label="Data evento"
-              value={dataInicioEvento}
-              onChangeText={(text) => setDataInicioEvento(text)}
-              left={<TextInput.Icon icon="calendar" />}
-              editable={false}
+              label="Nome evento"
+              value={nomeEvento}
+              onChangeText={(text) => setNomeEvento(text)}
+              left={<TextInput.Icon icon="calendar-star" />}
+              keyboardType="default"
             />
-          </TouchableOpacity>}
 
-          {showTimePicker && (
-            <DateTimePicker
-              testID="timeDateTimePicker"
-              value={startDate}
-              mode={'time'}
-              is24Hour={true}
-              display="clock"
-              onTouchCancel={() => setShowTimePicker(false)}
-              onChange={(event, date) => {
-                setShowTimePicker(false);
-                setStartDate(date);
-                setHoraInicioEvento(moment(date).format('HH:mm'));
-              }}
+            <Input
+              label="Local"
+              value={nomeLocal}
+              onChangeText={(text) => setNomeLocal(text)}
+              left={<TextInput.Icon icon="calendar-star" />}
+              keyboardType="default"
             />
-          )}
 
-          <TouchableOpacity onPress={() => setShowTimePicker(true)}>
             <Input
-              label="Horário evento"
-              value={horaInicioEvento}
-              onChangeText={(text) => setHoraInicioEvento(text)}
-              left={<TextInput.Icon icon="clock-time-nine-outline" />}
-              editable={false}
+              label="Endereço"
+              value={endereco}
+              onChangeText={(text) => setEndereco(text)}
+              left={<TextInput.Icon icon="calendar-star" />}
+              keyboardType="default"
             />
-          </TouchableOpacity>
-          <Input
-            label="Valor entrada"
-            value={valorEntrada}
-            onChangeText={(text) => setValorEntrada(text)}
-            left={<TextInput.Icon name="currency-brl" />}
-            keyboardType="numeric"
-          />
-          {show && (
-            <DateTimePicker
-              testID="endDateTimePicker"
-              value={endDate}
-              mode={'date'}
-              is24Hour={true}
-              onTouchCancel={() => setShowEndPicker(false)}
-              onChange={(event, date) => {
-                setShowEndPicker(false);
-                setEndDate(date);
-                setDataFimEvento(moment(date).format('DD/MM/YYYY'));
-              }}
-            />
-          )}
-          {<TouchableOpacity onPress={() => setShow(true)}>
+
             <Input
-              label="Data fim evento"
-              value={dataFimEvento}
-              onChangeText={(text) => setDataFimEvento(text)}
-              left={<TextInput.Icon icon="calendar" />}
-              editable={false}
+              label="Bairro"
+              value={bairro}
+              onChangeText={(text) => setBairro(text)}
+              left={<TextInput.Icon icon="calendar-star" />}
+              keyboardType="default"
             />
-          </TouchableOpacity>}
+
+            <Input
+              label="Cidade"
+              value={cidade}
+              onChangeText={(text) => setCidade(text)}
+              left={<TextInput.Icon icon="calendar-star" />}
+              keyboardType="default"
+            />
+
+            <Input
+              label="Estado"
+              value={estado}
+              onChangeText={(text) => setEstado(text)}
+              left={<TextInput.Icon icon="calendar-star" />}
+              keyboardType="default"
+            />
+
+            {<TouchableOpacity onPress={() => setShowStartPicker(true)}>
+              <Input
+                label="Data evento"
+                value={dataInicioEvento}
+                onChangeText={(text) => setDataInicioEvento(text)}
+                left={<TextInput.Icon icon="calendar" />}
+                editable={false}
+              />
+            </TouchableOpacity>}
+
+            {showStartPicker && (
+              <DateTimePicker
+                testID="startDateTimePicker"
+                value={startDate}
+                mode={'date'}
+                is24Hour={true}
+                onTouchCancel={() => setShowStartPicker(false)}
+                onChange={handleStartDateChange}
+              />
+            )}
+
+            <TouchableOpacity onPress={() => setShowTimePicker(true)}>
+              <Input
+                label="Horário evento"
+                value={horaInicioEvento}
+                onChangeText={(text) => setHoraInicioEvento(text)}
+                left={<TextInput.Icon icon="clock-time-nine-outline" />}
+                editable={false}
+              />
+            </TouchableOpacity>
+
+            {showTimePicker && (
+              <DateTimePicker
+                testID="timeDateTimePicker"
+                value={startDate}
+                mode={'time'}
+                is24Hour={true}
+                display="clock"
+                onTouchCancel={() => setShowTimePicker(false)}
+                onChange={handleTimeChange}
+              />
+            )}
+
+
+
+            <Input
+              label="Valor entrada"
+              value={valorEntrada}
+              onChangeText={(text) => setValorEntrada(text)}
+              left={<TextInput.Icon name="currency-brl" />}
+              keyboardType="numeric"
+            />
+
+            {<TouchableOpacity onPress={() => setShowEndPicker(true)}>
+              <Input
+                label="Data fim evento"
+                value={dataFimEvento}
+                onChangeText={(text) => setDataFimEvento(text)}
+                left={<TextInput.Icon icon="calendar" />}
+                editable={false}
+              />
+            </TouchableOpacity>}
+
+            {showEndPicker && (
+              <DateTimePicker
+                testID="endDateTimePicker"
+                value={endDate}
+                mode={'date'}
+                is24Hour={true}
+                onTouchCancel={() => setShowEndPicker(false)}
+                onChange={handleEndDateChange}
+              />
+            )}
+
+          </View>
 
           <Button
             mode="contained"
