@@ -60,44 +60,55 @@ const GerEventos = ({ route }) => {
 
     }
   }, [item]);
+  const handleSalvar = async () => {
+    try {
+      setLoading(true);
 
-  const handleSalvar = () => {
-    if (item) {
-      updateEvento({
-        tipo: tipo == 'esporte' ? 0 : 1,
-        nomeEvento: nomeEvento,
-        nomeLocal: nomeLocal,
-        endereco: endereco,
-        bairro: bairro,
-        cidade: cidade,
-        estado: estado,
-        dataInicioEvento: dataInicioEvento,
-        horaInicioEvento: horaInicioEvento,
-        valorEntrada: valorEntrada,
-        dataFimEvento: dataFimEvento,
-        id: item.id,
-      }).then(res => {
-        navigation.goBack();
-      });
-    } else {
-      insertEvento({
-        tipo: tipo == 'esporte' ? 0 : 1,
-        nomeEvento: nomeEvento,
-        nomeLocal: nomeLocal,
-        endereco: endereco,
-        bairro: bairro,
-        cidade: cidade,
-        estado: estado,
-        dataInicioEvento: dataInicioEvento,
-        horaInicioEvento: horaInicioEvento,
-        valorEntrada: valorEntrada,
-        dataFimEvento: dataFimEvento,
-      }).then(res => {
-        navigation.goBack();
-      });
+      if (item) {
+        await updateEvento({
+          tipo: tipo === 'esporte' ? 0 : 1,
+          nomeEvento: nomeEvento,
+          nomeLocal: nomeLocal,
+          endereco: endereco,
+          bairro: bairro,
+          cidade: cidade,
+          estado: estado,
+          dataInicioEvento: dataInicioEvento,
+          horaInicioEvento: horaInicioEvento,
+          valorEntrada: valorEntrada,
+          dataFimEvento: dataFimEvento,
+          id: item.id,
+        });
 
+        navigation.goBack();
+      } else {
+        const newEvent = await insertEvento({
+          tipo: tipo === 'esporte' ? 0 : 1,
+          nomeEvento: nomeEvento,
+          nomeLocal: nomeLocal,
+          endereco: endereco,
+          bairro: bairro,
+          cidade: cidade,
+          estado: estado,
+          dataInicioEvento: dataInicioEvento,
+          horaInicioEvento: horaInicioEvento,
+          valorEntrada: valorEntrada,
+          dataFimEvento: dataFimEvento,
+        });
+
+        if (newEvent) {
+          insertEvento(prevEvents => [...prevEvents, newEvent]);
+        }
+
+        navigation.goBack();
+      }
+    } catch (error) {
+      setError('Error saving event');
+    } finally {
+      setLoading(false);
     }
   };
+
 
   const handleExcluir = () => {
     deleteEvento(item.id).then(res => {
@@ -182,7 +193,7 @@ const GerEventos = ({ route }) => {
           />
           {show && (
             <DateTimePicker
-              testID="dateTimePicker"
+              testID="startDateTimePicker"
               value={startDate}
               mode={'date'}
               is24Hour={true}
@@ -198,7 +209,7 @@ const GerEventos = ({ route }) => {
             <Input
               label="Data evento"
               value={dataInicioEvento}
-              //onChangeText={(text) => setDataInicioEvento(text)}
+              onChangeText={(text) => setDataInicioEvento(text)}
               left={<TextInput.Icon icon="calendar" />}
               editable={false}
             />
@@ -219,7 +230,7 @@ const GerEventos = ({ route }) => {
           />
           {show && (
             <DateTimePicker
-              testID="dateTimePicker"
+              testID="endDateTimePicker"
               value={endDate}
               mode={'date'}
               is24Hour={true}
@@ -235,7 +246,7 @@ const GerEventos = ({ route }) => {
             <Input
               label="Data fim evento"
               value={dataFimEvento}
-              //onChangeText={(text) => setDataFimEvento(text)}
+              onChangeText={(text) => setDataFimEvento(text)}
               left={<TextInput.Icon icon="calendar" />}
               editable={false}
             />

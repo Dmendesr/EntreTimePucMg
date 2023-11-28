@@ -1,27 +1,47 @@
 import React, { useEffect, useState } from 'react';
 
-import { FlatList, StyleSheet } from 'react-native';
+import { FlatList, StyleSheet, ActivityIndicator } from 'react-native';
 import { List, Text, FAB as Fab } from 'react-native-paper';
 
 import Header from '../components/Header';
 import Container from '../components/Container';
 import Body from '../components/Body';
 
-import {useNavigation} from '@react-navigation/native';
-import {getEventos} from '../services/Eventos.Services';
+import { useNavigation } from '@react-navigation/native';
+import { getEventos } from '../services/Eventos.Services';
 
 const Eventos = () => {
 
   const navigation = useNavigation();
-  const[eventos, setEventos] = useState([]);
-  
-  useEffect(() => {
-    getEventos().then(dados => {
-      console.log(dados);
-      setEventos(dados);
-    });
-  }, []);
+  const [eventos, setEventos] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
+  useEffect(() => {
+    const fetchEventos = async () => {
+      try {
+        setLoading(true);
+        const dados = await getEventos();
+        setEventos(dados);
+      } catch (error) {
+        console.error('Error fetching events:', error);
+        setError('Error fetching events');
+      } finally {
+        setLoading(false);
+      }
+    };
+  
+    const fetchData = async () => {
+      try {
+        await fetchEventos();
+      } catch (error) {
+        console.error('Unhandled promise rejection:', error);
+      }
+    };
+  
+    fetchData();
+  }, []);
+  
 
   const renderItem = ({ item }) => (
     <List.Item
@@ -53,19 +73,44 @@ const Eventos = () => {
             item.valorEntrada}
         </Text>
       )}
-      onPress={() => navigation.navigate('Adicionar Eventos', {item})}
+      onPress={() => navigation.navigate('Adicionar Eventos', { item })}
     />
   );
+
+  if (loading) {
+    return (
+      <Container>
+        <Header title={'Eventos'}></Header>
+        <Body>
+          <ActivityIndicator size="large" color="#0000ff" />
+        </Body>
+      </Container>
+    );
+  }
+
+  if (error) {
+    return (
+      <Container>
+        <Header title={'Eventos'}></Header>
+        <Body>
+          <Text>{error}</Text>
+        </Body>
+      </Container>
+    );
+  }
+
+
+
   return (
     <Container>
-    <Header title={'Eventos'}></Header>
+      <Header title={'Eventos'}></Header>
 
       <Body>
         <FlatList
           data={eventos}
           renderItem={renderItem}
           keyExtractor={(item) => item.id.toString()}
-          
+
         />
         <Fab
           style={styles.Fab}
@@ -78,12 +123,12 @@ const Eventos = () => {
   );
 };
 const styles = StyleSheet.create({
-    Fab: {
-      position: 'absolute',
+  Fab: {
+    position: 'absolute',
     margin: 16,
     right: 0,
     bottom: 0,
-    }
+  }
 });
 
 export default Eventos;
