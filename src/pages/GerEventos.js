@@ -33,8 +33,6 @@ const GerEventos = ({ route }) => {
 
   const [loading, setLoading] = useState(true);
 
-  const [show, setShow] = useState(false);
-
   const [tipo, setTipo] = useState('esporte');
 
   const [nomeEvento, setNomeEvento] = useState(null);

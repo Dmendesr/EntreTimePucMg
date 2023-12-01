@@ -30,6 +30,8 @@ const Eventos = () => {
         setLoading(false);
       }
     };
+    fetchEventos();
+  }, []);
   
     const fetchData = async () => {
       try {
@@ -40,8 +42,6 @@ const Eventos = () => {
     };
   
     fetchData();
-  }, []);
-  
 
   const renderItem = ({ item }) => (
     <List.Item
@@ -99,15 +99,9 @@ const Eventos = () => {
     );
   }
 
-
-
-  return (
-    <Container>
-      <Header title={'Eventos'}></Header>
-
       <Body>
         <FlatList
-          data={eventos}
+          data={Eventos}
           renderItem={renderItem}
           keyExtractor={(item) => item.id.toString()}
 
@@ -116,12 +110,12 @@ const Eventos = () => {
           style={styles.Fab}
           small
           icon="plus"
-          onPress={() => navigation.navigate('Adicionar Eventos')}
+          onPress={() => useNavigation.navigate('Adicionar Eventos')}
         />
       </Body>
     </Container>
-  );
-};
+  
+  };
 const styles = StyleSheet.create({
   Fab: {
     position: 'absolute',
